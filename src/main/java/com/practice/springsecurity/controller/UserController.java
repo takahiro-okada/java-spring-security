@@ -24,7 +24,7 @@ public class UserController {
 
   @PostMapping("/login/")
   public ResponseEntity<HttpStatus> login(@RequestBody User user) throws Exception{
-    System.out.println("コントローラーの処理");
+    System.out.println("コントローラーの処理の確認");
     System.out.println(user);
     return new ResponseEntity<HttpStatus>(HttpStatus.OK);
   }
