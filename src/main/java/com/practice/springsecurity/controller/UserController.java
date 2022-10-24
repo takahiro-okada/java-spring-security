@@ -17,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-  @Autowired
-  private AuthenticationManager authenticationManager;
-
   @GetMapping("/")
   public String test(){
     return "index";
@@ -27,17 +24,8 @@ public class UserController {
 
   @PostMapping("/login/")
   public ResponseEntity<HttpStatus> login(@RequestBody User user) throws Exception{
-    System.out.println("hoge");
-    Authentication authObject = null;
-    try {
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),
-          user.getPassword()));
-      System.out.println(authObject);
-      SecurityContextHolder.getContext().setAuthentication(authObject);
-    } catch (BadCredentialsException e) {
-      throw new Exception("Invalid credentials");
-    }
-
+    System.out.println("コントローラーの処理");
+    System.out.println(user);
     return new ResponseEntity<HttpStatus>(HttpStatus.OK);
   }
 
